@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+   <table border="1">
+    <tr>
+      
+            <input type="text" id="inputBox" value="0"/> 
+      
+    </tr>
+    <tr>
+        <td onclick="digitalBtnPressed(7)" id="First-numbers">7</td>
+        <td onclick="digitalBtnPressed(8)" id="First-numbers">8</td>
+        <td onclick="digitalBtnPressed(9)" id="First-numbers">9</td>
+        <td onclick="operatorBtnPressed('x')" id="operator">x</td>
+    </tr>
+    <tr>
+        <td onclick="digitalBtnPressed(4)" id="First-numbers">4</td>
+        <td onclick="digitalBtnPressed(5)" id="First-numbers">5</td>
+        <td onclick="digitalBtnPressed(6)" id="First-numbers">6</td>
+        <td onclick="operatorBtnPressed('-')" id="operator">-</td>
+    </tr>
+     
+     <tr>
+        <td onclick="digitalBtnPressed(1)" id="First-numbers">1</td>
+        <td onclick="digitalBtnPressed(2)" id="First-numbers">2</td>
+        <td onclick="digitalBtnPressed(3)" id="First-numbers">3</td>
+        <td onclick="operatorBtnPressed('+')" id="operator">+</td>
+    </tr>
+    <tr>
+        <td colspan="3" onclick="digitalBtnPressed(0)" id="First-numbers">0</td>
+
+        <td onclick="removingNumbers()" id="operator">AC</td>
+        <td onclick="operatorBtnPressed('/')" id="operator">/</td>
+    </tr>
+    <tr>
+        <td colspan="4" onclick="equalsBtnPressed('=')" id="operator">=</td>
+    </tr>
+   </table> 
+   <script>
+      var newLine = true;// determines the next thing th euser types and it should be on a new line
+      var value1;
+      var currentOperator;
+
+    //event handler for when any digit is pressed
+    function digitalBtnPressed(button){
+      
+         if(newLine){
+            document.getElementById("inputBox").value = button;
+            newLine = false;
+         } else {
+                var currentValue = document.getElementById("inputBox").value;
+                 document.getElementById("inputBox").value = currentValue + button;
+    
+         } 
+    }
+    // when a user presses AC the display becomes 0
+    function removingNumbers(input){
+        document.getElementById("inputBox").value = 0;
+        newLine = true;
+    }
+    // event for when you press one of the operators
+    function operatorBtnPressed(operator){
+       currentOperator = operator;
+       value1 = parseInt(document.getElementById("inputBox").value);
+       newLine = true;
+    }
+   // gives out an answer when the equals button is pressed
+    function equalsBtnPressed(){
+      var value2 = parseInt(document.getElementById("inputBox").value);
+      var finalTotal;
+
+      switch(currentOperator){
+        case "+":
+            finalTotal = value1 + value2;
+            break;
+        case "/":
+            finalTotal = value1 / value2;
+            break;
+        case "-":
+            finalTotal = value1 - value2;
+            break;
+        case "x":
+            finalTotal = value1 * value2;
+            break;
+      }
+      document.getElementById("inputBox").value = finalTotal;
+
+      value1 = 0;
+      newLine = true;
+    }
+    
+   </script>
+</body>
+</html>

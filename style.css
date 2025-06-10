@@ -1,0 +1,39 @@
+table{
+    width: 100%;
+    height: 700px;
+}
+#First-numbers{
+    background-color: orange;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 20px;
+    font-family: helvetica;
+}
+#operator{
+    background-color: gray;
+    font-family: helvetica;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 20px;
+
+}
+body{
+    background-color: black;
+}
+#inputBox{
+   width: 99%;
+   padding-top: 40px;
+   padding-bottom: 20px;
+   margin-top: 0%;
+   border-radius: 12px;
+}
+  @media (max-width: 600px) {
+    td {
+      padding: 15px;
+      font-size: 1.2rem;
+    }
+
+    input[type="text"] {
+      font-size: 1.5rem;
+    }
+  }
